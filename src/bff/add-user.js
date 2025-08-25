@@ -13,4 +13,4 @@ export const addUser = (login, password) =>
                 .replace('T', ' '),
             role_id: 2,
         }),
-    });
+    }).then((createdUser) => createdUser.json());

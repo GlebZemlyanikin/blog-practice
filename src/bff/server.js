@@ -12,14 +12,14 @@ export const server = {
 
         if (!user) {
             return {
-                error: 'User not found',
+                error: 'Пользователь не найден',
                 res: null,
             };
         }
 
         if (authPassword !== user.password) {
             return {
-                error: 'Invalid password',
+                error: 'Неверный пароль',
                 res: null,
             };
         }
@@ -36,16 +36,16 @@ export const server = {
     },
 
     async register(regLogin, regPassword) {
-        const user = await getUser(regLogin);
+        const existedUser = await getUser(regLogin);
 
-        if (user) {
+        if (existedUser) {
             return {
-                error: 'Login already exists',
+                error: 'Пользователь с таким логином уже существует',
                 res: null,
             };
         }
 
-        await addUser(regLogin, regPassword);
+        const user = await addUser(regLogin, regPassword);
 
         return {
             error: null,

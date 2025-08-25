@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
-import { Authorization } from './pages/authorization/authorization';
 import styled from 'styled-components';
+import { Authorization } from './pages/authorization/authorization';
+import { Registration } from './pages/registration/registration';
 
 const AppColum = styled.div`
     display: flex;
@@ -30,7 +31,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<div>Главная страница</div>} />
                     <Route path="/login" element={<Authorization />} />
-                    <Route path="/register" element={<div>Register</div>} />
+                    <Route path="/register" element={<Registration />} />
                     <Route path="/users" element={<div>Users</div>} />
                     <Route path="/post" element={<div>New Post</div>} />
                     <Route path="/post/:postId" element={<div>PostId</div>} />

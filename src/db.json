@@ -1,32 +1,18 @@
 {
   "users": [
     {
-      "id": "001",
       "login": "ivan",
       "password": "123456",
       "registered_at": "2020-10-10",
-      "role_id": 0
-    },
-    {
-      "login": "petr",
-      "password": "123456",
-      "registered_at": "2025-08-25 09:24",
-      "role_id": 2,
-      "id": "fAQYmsy"
+      "role_id": 0,
+      "id": "001"
     },
     {
       "login": "petr2",
       "password": "123456",
-      "registered_at": "2025-08-25 09:31",
-      "role_id": 2,
-      "id": "uLMBRDc"
-    },
-    {
-      "login": "kate",
-      "password": "123456",
-      "registered_at": "2025-08-25 11:17",
-      "role_id": 2,
-      "id": "uV7cDp9"
+      "registered_at": "2025-08-30 07:49",
+      "role_id": 1,
+      "id": "3fmfWD4"
     }
   ],
   "roles": [

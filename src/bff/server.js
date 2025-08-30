@@ -1,60 +1,17 @@
-import { getUser } from './get-user.js';
-import { addUser } from './add-user.js';
-import { sessions } from './sessions.js';
+import { authorize } from './operations/authorize';
+import { logout } from './operations/logout';
+import { register } from './operations/register';
+import { fetchRoles } from './operations/fetch-roles';
+import { fetchUsers } from './operations/fetch-users';
+import { updateUserRole } from './operations/update-user-role';
+import { removeUser } from './operations/remove-user';
 
 export const server = {
-    async logout(session) {
-        sessions.remove(session);
-    },
-
-    async authorize(authLogin, authPassword) {
-        const user = await getUser(authLogin);
-
-        if (!user) {
-            return {
-                error: 'Пользователь не найден',
-                res: null,
-            };
-        }
-
-        if (authPassword !== user.password) {
-            return {
-                error: 'Неверный пароль',
-                res: null,
-            };
-        }
-
-        return {
-            error: null,
-            res: {
-                id: user.id,
-                login: user.login,
-                roleId: user.role_id,
-                session: sessions.create(user),
-            },
-        };
-    },
-
-    async register(regLogin, regPassword) {
-        const existedUser = await getUser(regLogin);
-
-        if (existedUser) {
-            return {
-                error: 'Пользователь с таким логином уже существует',
-                res: null,
-            };
-        }
-
-        const user = await addUser(regLogin, regPassword);
-
-        return {
-            error: null,
-            res: {
-                id: user.id,
-                login: user.login,
-                roleId: user.role_id,
-                session: sessions.create(user),
-            },
-        };
-    },
+    logout,
+    authorize,
+    register,
+    fetchUsers,
+    fetchRoles,
+    updateUserRole,
+    removeUser,
 };

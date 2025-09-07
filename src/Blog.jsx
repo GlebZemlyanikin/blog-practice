@@ -5,6 +5,10 @@ import styled from 'styled-components';
 import { Authorization } from './pages/authorization/authorization';
 import { Registration } from './pages/registration/registration';
 import { Users } from './pages/users/users';
+import { Post } from './pages/post/post';
+import { useLayoutEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from './action/set-user';
 
 const AppColum = styled.div`
     display: flex;
@@ -17,14 +21,30 @@ const AppColum = styled.div`
 `;
 
 const Page = styled.div`
-    padding: 120px 0;
+    padding: 120px 0 20px;
 `;
 
-const H2 = styled.h2`
-    text-align: center;
-`;
+// const H2 = styled.h2`
+//     text-align: center;
+// `;
 
 function App() {
+    const dispatch = useDispatch();
+
+    useLayoutEffect(() => {
+        const currentUserDataJSON = sessionStorage.getItem('userData');
+        if (!currentUserDataJSON) return;
+
+        const currentUserData = JSON.parse(currentUserDataJSON);
+
+        dispatch(
+            setUser({
+                ...currentUserData,
+                roleId: Number(currentUserData.roleId),
+            })
+        );
+    }, [dispatch]);
+
     return (
         <AppColum>
             <Header />
@@ -35,7 +55,7 @@ function App() {
                     <Route path="/register" element={<Registration />} />
                     <Route path="/users" element={<Users />} />
                     <Route path="/post" element={<div>New Post</div>} />
-                    <Route path="/post/:postId" element={<div>PostId</div>} />
+                    <Route path="/post/:id" element={<Post />} />
                     <Route path="*" element={<div>Error</div>} />
                 </Routes>
             </Page>

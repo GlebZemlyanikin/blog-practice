@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import styled from 'styled-components';
-import { server } from '../../bff/server.js';
 import { Input } from '../../components/input/input.jsx';
 import { Button } from '../../components/button/button.jsx';
 import { H2 } from '../../components/h2/h2.jsx';
@@ -14,6 +13,7 @@ import { setUser } from '../../action/set-user.js';
 import { selectUserRole } from '../../selectors/select-user-role.js';
 import { ROLE } from '../../bff/constants/role.js';
 import { useResetForm } from '../../hooks/use-reset-form.js';
+import { server } from '../../bff/server.js';
 
 const regFormSchema = yup.object().shape({
     login: yup
@@ -71,6 +71,7 @@ const RegistrationContainer = ({ className }) => {
             }
 
             dispatch(setUser(res));
+            sessionStorage.setItem('userData', JSON.stringify(res));
         });
     };
 

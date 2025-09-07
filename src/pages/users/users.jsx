@@ -37,7 +37,7 @@ const UsersContainer = ({ className }) => {
                 setDeleteError(result.error);
                 return;
             }
-            
+
             if (result.res) {
                 setShouldUpdateUserList(!shouldUpdateUserList);
                 setDeleteError(null);

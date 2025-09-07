@@ -1,15 +1,18 @@
+import { ACTION_TYPE } from '../action/action-type';
+
 const initialPostState = {
-    id: null,
+    id: '',
     title: '',
     content: '',
+    imageUrl: '',
+    publishedAt: '',
+    comments: [],
 };
 
 export const postReducer = (state = initialPostState, action) => {
     switch (action.type) {
-        case 'SET_POST':
+        case ACTION_TYPE.SET_POST_DATA:
             return { ...state, ...action.payload };
-        case 'LOGOUT':
-            return initialPostState;
         default:
             return state;
     }

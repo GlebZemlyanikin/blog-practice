@@ -105,27 +105,6 @@
       "content": "Коммент\n",
       "published_at": "2025-09-07 11:59",
       "id": 4
-    },
-    {
-      "post_id": "001",
-      "author_id": "001",
-      "content": "Ещё",
-      "published_at": "2025-09-07 11:59",
-      "id": 5
-    },
-    {
-      "post_id": "001",
-      "author_id": "001",
-      "content": "Лайк",
-      "published_at": "2025-09-07 11:59",
-      "id": 6
-    },
-    {
-      "post_id": "001",
-      "author_id": "001",
-      "content": "Новый коммент\n",
-      "published_at": "2025-09-07 12:03",
-      "id": 7
     }
   ],
   "sessions": [

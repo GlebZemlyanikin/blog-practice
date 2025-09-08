@@ -7,6 +7,7 @@ import { fetchUsers } from './operations/fetch-users';
 import { updateUserRole } from './operations/update-user-role';
 import { removeUser } from './operations/remove-user';
 import { addPostComment } from './operations/add-post-comment';
+import { removePostComment } from './operations/remove-post-comment';
 
 export const server = {
     authorize,
@@ -18,4 +19,5 @@ export const server = {
     updateUserRole,
     removeUser,
     addPostComment,
+    removePostComment,
 };

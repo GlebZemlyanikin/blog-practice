@@ -9,6 +9,7 @@ import { Post } from './pages/post/post';
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './action/set-user';
+import { Modal } from './components/modal/modal';
 
 const AppColum = styled.div`
     display: flex;
@@ -23,10 +24,6 @@ const AppColum = styled.div`
 const Page = styled.div`
     padding: 120px 0 20px;
 `;
-
-// const H2 = styled.h2`
-//     text-align: center;
-// `;
 
 function App() {
     const dispatch = useDispatch();
@@ -60,6 +57,7 @@ function App() {
                 </Routes>
             </Page>
             <Footer />
+            <Modal />
         </AppColum>
     );
 }

@@ -8,6 +8,7 @@ import { updateUserRole } from './operations/update-user-role';
 import { removeUser } from './operations/remove-user';
 import { addPostComment } from './operations/add-post-comment';
 import { removePostComment } from './operations/remove-post-comment';
+import { savePost } from './operations/save-post';
 
 export const server = {
     authorize,
@@ -20,4 +21,5 @@ export const server = {
     removeUser,
     addPostComment,
     removePostComment,
+    savePost,
 };

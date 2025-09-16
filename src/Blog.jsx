@@ -22,7 +22,7 @@ const AppColum = styled.div`
 `;
 
 const Page = styled.div`
-    padding: 120px 0 20px;
+    // padding: 120px 0 20px;
 `;
 
 function App() {
@@ -53,6 +53,7 @@ function App() {
                     <Route path="/users" element={<Users />} />
                     <Route path="/post" element={<div>New Post</div>} />
                     <Route path="/post/:id" element={<Post />} />
+                    <Route path="/post/:id/edit" element={<Post />} />
                     <Route path="*" element={<div>Error</div>} />
                 </Routes>
             </Page>

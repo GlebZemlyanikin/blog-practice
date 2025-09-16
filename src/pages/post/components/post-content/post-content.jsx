@@ -1,48 +1,34 @@
 import styled from 'styled-components';
 import { H2 } from '../../../../components/h2/h2';
+import { PublishedAt } from '../published-at/published-at';
 import { Icon } from '../../../../components/icon/icon';
+import { useNavigate } from 'react-router-dom';
 
 const PostContentContainer = ({
     className,
-    post: {
-        // id,
-        title,
-        content,
-        imageUrl,
-        publishedAt,
-    },
+    post: { title, content, imageUrl, publishedAt, id },
 }) => {
+    const navigate = useNavigate();
+
     return (
         <div className={className}>
             {imageUrl ? <img src={imageUrl} alt={title} /> : null}
             <H2>{title}</H2>
-            <div className="published-at">
-                <div className="published-at-date">
-                    <Icon
-                        id="fa-calendar-o"
-                        margin="0 10px 0 0"
-                        size="18px"
-
-                        // onClick={}
-                    />
-                    {publishedAt}
-                </div>
-                <div className="published-at-actions">
+            <PublishedAt
+                publishedAt={publishedAt}
+                margin="-20px 0 20px"
+                editButton={
                     <Icon
                         id="fa-pencil-square-o"
                         margin="0 10px 0 0 "
                         size="22px"
-
-                        // onClick={}
+                        onClick={() => {
+                            navigate(`/post/${id}/edit`);
+                        }}
                     />
-                    <Icon
-                        id="fa-trash-o"
-                        size="22px"
+                }
+            />
 
-                        // onClick={}
-                    />
-                </div>
-            </div>
             <div className="content">{content}</div>
         </div>
     );
@@ -55,22 +41,7 @@ export const PostContent = styled(PostContentContainer)`
         height: 200px;
         margin: 0 20px 20px 0;
     }
-
-    & .published-at {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: -20px 0 20px;
-        font-size: 18px;
-    }
-
-    & .published-at-date {
-        display: flex;
-        align-items: center;
-    }
-
-    & .published-at-actions {
-        display: flex;
-        align-items: center;
+    & .content {
+        white-space: pre-wrap;
     }
 `;

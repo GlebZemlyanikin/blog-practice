@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Icon } from '../../../../components/icon/icon';
-import { Comment } from '../components/comment/comment';
+import { Comment } from './comment/comment';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId } from '../../../../selectors/select-user-id';
 import { addCommentAsync } from '../../../../action/add-comment-async';

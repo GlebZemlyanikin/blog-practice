@@ -10,6 +10,7 @@ import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './action/set-user';
 import { Modal } from './components/modal/modal';
+import { Main } from './pages/main/main';
 
 const AppColum = styled.div`
     display: flex;
@@ -47,7 +48,7 @@ function App() {
             <Header />
             <Page>
                 <Routes>
-                    <Route path="/" element={<div>Главная страница</div>} />
+                    <Route path="/" element={<Main />} />
                     <Route path="/login" element={<Authorization />} />
                     <Route path="/register" element={<Registration />} />
                     <Route path="/users" element={<Users />} />

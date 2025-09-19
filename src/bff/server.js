@@ -10,6 +10,7 @@ import { addPostComment } from './operations/add-post-comment';
 import { removePostComment } from './operations/remove-post-comment';
 import { savePost } from './operations/save-post';
 import { removePost } from './operations/remove-post';
+import { fetchPosts } from './operations/fetch-posts';
 
 export const server = {
     authorize,
@@ -24,4 +25,5 @@ export const server = {
     removePostComment,
     savePost,
     removePost,
+    fetchPosts,
 };

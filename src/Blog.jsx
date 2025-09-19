@@ -51,7 +51,7 @@ function App() {
                     <Route path="/login" element={<Authorization />} />
                     <Route path="/register" element={<Registration />} />
                     <Route path="/users" element={<Users />} />
-                    <Route path="/post" element={<div>New Post</div>} />
+                    <Route path="/post" element={<Post />} />
                     <Route path="/post/:id" element={<Post />} />
                     <Route path="/post/:id/edit" element={<Post />} />
                     <Route path="*" element={<div>Error</div>} />

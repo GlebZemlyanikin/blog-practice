@@ -15,6 +15,7 @@ const PostContentContainer = ({
             {imageUrl ? <img src={imageUrl} alt={title} /> : null}
             <H2>{title}</H2>
             <PublishedAt
+                id={id}
                 publishedAt={publishedAt}
                 margin="-20px 0 20px"
                 editButton={

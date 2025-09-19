@@ -9,6 +9,7 @@ import { removeUser } from './operations/remove-user';
 import { addPostComment } from './operations/add-post-comment';
 import { removePostComment } from './operations/remove-post-comment';
 import { savePost } from './operations/save-post';
+import { removePost } from './operations/remove-post';
 
 export const server = {
     authorize,
@@ -22,4 +23,5 @@ export const server = {
     addPostComment,
     removePostComment,
     savePost,
+    removePost,
 };

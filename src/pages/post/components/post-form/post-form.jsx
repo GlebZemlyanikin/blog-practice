@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Input } from '../../../../components/input/input';
 import { PublishedAt } from '../published-at/published-at';
 import { Icon } from '../../../../components/icon/icon';
-import { useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { savePostAsync } from '../../../../action/save-post-async';
 import { useNavigate } from 'react-router-dom';
 import { useServerRequest } from '../../../../hooks/use-server-request';
@@ -12,54 +12,62 @@ const PostFormContainer = ({
     className,
     post: { title, content, imageUrl, publishedAt, id },
 }) => {
-    const imageUrlRef = useRef(null);
-    const titleRef = useRef(null);
+    const [imageUrlValue, setImageUrlValue] = useState(imageUrl);
+    const [titleValue, setTitleValue] = useState(title);
+
     const contentRef = useRef(null);
-
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
-
     const requestServer = useServerRequest();
 
+    useLayoutEffect(() => {
+        setImageUrlValue(imageUrl);
+        setTitleValue(title);
+    }, [imageUrl, title]);
+
     const onSave = () => {
-        const imageUrl = imageUrlRef.current.value;
-        const title = titleRef.current.value;
         const content = contentRef.current.innerText;
 
         dispatch(
             savePostAsync(requestServer, {
-                imageUrl: imageUrl,
-                title: title,
+                imageUrl: imageUrlValue,
+                title: titleValue,
                 content: content,
                 id: id,
-                // publishedAt: publishedAt,
             })
-        ).then(() => {
+        ).then(({ id }) => {
             navigate(`/post/${id}`);
         });
+    };
+
+    const onImageChange = ({ target }) => {
+        setImageUrlValue(target.value);
+    };
+    const onTitleChange = ({ target }) => {
+        setTitleValue(target.value);
     };
 
     return (
         <div className={className}>
             <Input
-                ref={imageUrlRef}
-                defaultValue={imageUrl}
+                value={imageUrlValue}
                 placeholder="Изображение"
+                onChange={onImageChange}
             />
             <Input
-                ref={titleRef}
-                defaultValue={title}
+                value={titleValue}
                 placeholder="Заголовок"
+                onChange={onTitleChange}
             />
             <PublishedAt
+                id={id}
                 publishedAt={publishedAt}
                 margin="20px 0"
                 editButton={
                     <Icon
                         id="fa-floppy-o"
-                        margin="0 10px 0 0 "
                         size="22px"
+                        margin="0 10px 0 0"
                         onClick={onSave}
                     />
                 }
@@ -86,5 +94,7 @@ export const PostForm = styled(PostFormContainer)`
     }
     & .content {
         white-space: pre-wrap;
+        min-height: 100px;
+        border: 1px solid #000;
     }
 `;

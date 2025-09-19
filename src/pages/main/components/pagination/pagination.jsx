@@ -1,0 +1,50 @@
+import styled from 'styled-components';
+import { Button } from '../../../../components/button/button';
+
+const PaginationContainer = ({ className, page, lastPage, setPage }) => {
+    return (
+        <div className={className}>
+            <Button disabled={page === 1} onClick={() => setPage(1)}>
+                В начало
+            </Button>
+            <Button disabled={page === 1} onClick={() => setPage(page - 1)}>
+                Назад
+            </Button>
+            <div className="current-page">Текущая страница: {page}</div>
+            <Button
+                disabled={page === lastPage}
+                onClick={() => setPage(page + 1)}
+            >
+                Вперед
+            </Button>
+            <Button
+                disabled={page === lastPage}
+                onClick={() => setPage(lastPage)}
+            >
+                В конец
+            </Button>
+        </div>
+    );
+};
+
+export const Pagination = styled(PaginationContainer)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+    & button {
+        margin: 0 10px;
+        width: 100px;
+    }
+
+    & .current-page {
+        border: 1px solid #000;
+        border-radius: 5px;
+        width: 220px;
+        height: 32px;
+        text-align: center;
+        padding: 4px;
+        font-size: 18px;
+    }
+`;

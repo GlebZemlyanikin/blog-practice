@@ -6,36 +6,42 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId } from '../../../../selectors/select-user-id';
 import { addCommentAsync } from '../../../../action/add-comment-async';
 import { useServerRequest } from '../../../../hooks/use-server-request';
+import { ROLE } from '../../../../bff/constants/role';
+import { selectUserRole } from '../../../../selectors/select-user-role';
 
 const CommentsContainer = ({ className, comments, postId }) => {
     const [newComment, setNewComment] = useState('');
     const dispatch = useDispatch();
     const userId = useSelector(selectUserId);
     const requestServer = useServerRequest();
+    const roleId = useSelector(selectUserRole);
 
     const onNewCommentSubmit = (postId, userId, content) => {
         dispatch(addCommentAsync(requestServer, postId, userId, content));
         setNewComment('');
     };
 
+    const isGuest = roleId === ROLE.GUEST;
     return (
         <div className={className}>
-            <div className="new-comment">
-                <textarea
-                    name="newComment"
-                    value={newComment}
-                    placeholder="Напишите комментарий"
-                    onChange={(e) => setNewComment(e.target.value)}
-                />
-                <Icon
-                    id="fa-paper-plane-o"
-                    margin="0 0 0 10px"
-                    size="18px"
-                    onClick={() =>
-                        onNewCommentSubmit(postId, userId, newComment)
-                    }
-                />
-            </div>
+            {!isGuest && (
+                <div className="new-comment">
+                    <textarea
+                        name="newComment"
+                        value={newComment}
+                        placeholder="Напишите комментарий"
+                        onChange={(e) => setNewComment(e.target.value)}
+                    />
+                    <Icon
+                        id="fa-paper-plane-o"
+                        margin="0 0 0 10px"
+                        size="18px"
+                        onClick={() =>
+                            onNewCommentSubmit(postId, userId, newComment)
+                        }
+                    />
+                </div>
+            )}
             <div className="comments">
                 {comments.map(({ id, content, author, publishedAt }) => (
                     <Comment

@@ -75,7 +75,6 @@ export const Main = styled(MainContainer)`
     & .post-list {
         display: flex;
         flex-wrap: wrap;
-        // width: 280px;
         font-size: 18px;
         padding: 20px;
     }

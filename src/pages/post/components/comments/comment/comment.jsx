@@ -5,6 +5,10 @@ import { useServerRequest } from '../../../../../hooks/use-server-request';
 import { removeCommentAsync } from '../../../../../action/remove-comment-async';
 import { openModal } from '../../../../../action/open-modal';
 import { CLOSE_MODAL } from '../../../../../action/close-modal';
+import { checkAccess } from '../../../../../bff/utils/check-access';
+import { ROLE } from '../../../../../bff/constants/role';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '../../../../../selectors/select-user-role';
 
 const CommentContainer = ({
     className,
@@ -16,6 +20,7 @@ const CommentContainer = ({
 }) => {
     const dispatch = useDispatch();
     const requestServer = useServerRequest();
+    const roleId = useSelector(selectUserRole);
 
     const onCommentDelete = (id) => {
         dispatch(
@@ -30,6 +35,11 @@ const CommentContainer = ({
             })
         );
     };
+
+    const isAdminOrModerator = checkAccess(
+        [ROLE.ADMIN, ROLE.MODERATOR],
+        roleId
+    );
 
     return (
         <div className={className}>
@@ -56,12 +66,14 @@ const CommentContainer = ({
                 </div>
                 <div className="comment">{content}</div>
             </div>
-            <Icon
-                id="fa-trash-o"
-                margin="0 0 0 10px"
-                size="18px"
-                onClick={() => onCommentDelete(id)}
-            />
+            {isAdminOrModerator && (
+                <Icon
+                    id="fa-trash-o"
+                    margin="0 0 0 10px"
+                    size="18px"
+                    onClick={() => onCommentDelete(id)}
+                />
+            )}
         </div>
     );
 };

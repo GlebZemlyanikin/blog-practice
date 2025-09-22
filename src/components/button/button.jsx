@@ -20,6 +20,7 @@ export const Button = styled(ButtonContainer).withConfig({
     border: 1px solid #000;
     border-radius: 4px;
     background-color: #eee;
+    padding: 10px;
 
     &:hover {
         cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};

@@ -6,11 +6,17 @@ import { openModal } from '../../../../action/open-modal';
 import { CLOSE_MODAL } from '../../../../action/close-modal';
 import { removePostAsync } from '../../../../action/remove-post-async';
 import { useNavigate } from 'react-router-dom';
+import { checkAccess } from '../../../../bff/utils/check-access';
+import { ROLE } from '../../../../bff/constants/role';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '../../../../selectors/select-user-role';
 
 const PublishedAtContainer = ({ className, publishedAt, editButton, id }) => {
     const dispatch = useDispatch();
     const requestServer = useServerRequest();
     const navigate = useNavigate();
+    const roleId = useSelector(selectUserRole);
+
     const onPostDelete = (id) => {
         dispatch(
             openModal({
@@ -26,6 +32,9 @@ const PublishedAtContainer = ({ className, publishedAt, editButton, id }) => {
             })
         );
     };
+
+    const isAdmin = checkAccess([ROLE.ADMIN], roleId);
+
     return (
         <div className={className}>
             <div className="published-at-date">
@@ -39,17 +48,19 @@ const PublishedAtContainer = ({ className, publishedAt, editButton, id }) => {
                 )}
                 {publishedAt}
             </div>
-            <div className="published-at-actions">
-                {editButton}
-                {publishedAt && (
-                    <Icon
-                        id="fa-trash-o"
-                        size="22px"
-                        margin="0 0 2px 0"
-                        onClick={() => onPostDelete(id)}
-                    />
-                )}
-            </div>
+            {isAdmin && (
+                <div className="published-at-actions">
+                    {editButton}
+                    {publishedAt && (
+                        <Icon
+                            id="fa-trash-o"
+                            size="22px"
+                            margin="0 0 2px 0"
+                            onClick={() => onPostDelete(id)}
+                        />
+                    )}
+                </div>
+            )}
         </div>
     );
 };

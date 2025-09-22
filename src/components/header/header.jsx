@@ -2,7 +2,11 @@ import { Logo } from './components/logo';
 import { ControlPanel } from './components/control-panel';
 import styled from 'styled-components';
 
-const Discription = styled.div``;
+const Discription = styled.div`
+    font-size: 18px;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+`;
 
 const HeaderContainer = ({ className }) => (
     <header className={className}>
@@ -21,8 +25,7 @@ const HeaderContainer = ({ className }) => (
 export const Header = styled(HeaderContainer)`
     display: flex;
     justify-content: space-between;
-    // position: fixed;
-    // top: 0;
+    align-items: center;
     width: 1000px;
     height: 120px;
     padding: 20px 40px;

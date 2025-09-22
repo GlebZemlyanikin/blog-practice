@@ -9,6 +9,7 @@ import { checkAccess } from '../../../../../bff/utils/check-access';
 import { ROLE } from '../../../../../bff/constants/role';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../../../../selectors/select-user-role';
+import PropTypes from 'prop-types';
 
 const CommentContainer = ({
     className,
@@ -108,3 +109,11 @@ export const Comment = styled(CommentContainer)`
         margin: 10px 0 0;
     }
 `;
+
+Comment.propTypes = {
+    id: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    publishedAt: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired,
+};

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Icon } from '../../../../components/icon/icon';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PostCardContainer = ({
     className,
@@ -83,3 +84,11 @@ export const PostCard = styled(PostCardContainer)`
         font-size: 18px;
     }
 `;
+
+PostCard.propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    publishedAt: PropTypes.string.isRequired,
+    commentsCount: PropTypes.number.isRequired,
+};

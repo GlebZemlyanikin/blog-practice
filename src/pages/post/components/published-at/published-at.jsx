@@ -10,6 +10,7 @@ import { checkAccess } from '../../../../bff/utils/check-access';
 import { ROLE } from '../../../../bff/constants/role';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../../../selectors/select-user-role';
+import PropTypes from 'prop-types';
 
 const PublishedAtContainer = ({ className, publishedAt, editButton, id }) => {
     const dispatch = useDispatch();
@@ -89,3 +90,9 @@ export const PublishedAt = styled(PublishedAtContainer)`
         align-items: center;
     }
 `;
+
+PublishedAt.propTypes = {
+    publishedAt: PropTypes.string.isRequired,
+    editButton: PropTypes.node.isRequired,
+    id: PropTypes.string.isRequired,
+};

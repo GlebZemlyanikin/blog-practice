@@ -15,12 +15,15 @@ const MainContainer = ({ className }) => {
     const [search, setSearch] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
     const requestServer = useServerRequest();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true);
         requestServer('fetchPosts', searchPhrase, page, PAGINATION_LIMIT).then(
             ({ res: { posts, links } }) => {
                 setPosts(posts);
                 setLastPage(getLastPage(links));
+                setIsLoading(false);
             }
         );
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,8 +38,10 @@ const MainContainer = ({ className }) => {
 
     return (
         <div className={className}>
-            <Search searchPhrase={searchPhrase} onChange={onSearch} />
-            {posts.length ? (
+            {!isLoading && (
+                <Search searchPhrase={searchPhrase} onChange={onSearch} />
+            )}
+            {isLoading ? null : posts.length ? (
                 <div className="post-list">
                     {posts.map(
                         ({
@@ -57,9 +62,9 @@ const MainContainer = ({ className }) => {
                         )
                     )}
                 </div>
-            ) : (
+            ) : searchPhrase.trim() ? (
                 <div className="no-results">Поиск не дал результатов</div>
-            )}
+            ) : null}
             {lastPage > 1 && (
                 <Pagination page={page} lastPage={lastPage} setPage={setPage} />
             )}

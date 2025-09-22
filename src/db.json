@@ -205,5 +205,17 @@
       "id": 11
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "hash": "0aqtsmpf5js",
+      "user": {
+        "id": "001",
+        "login": "ivan",
+        "password": "123456",
+        "registeredAt": "2020-10-10",
+        "roleId": 0
+      },
+      "id": 1
+    }
+  ]
 }

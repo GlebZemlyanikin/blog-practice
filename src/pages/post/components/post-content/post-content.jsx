@@ -3,6 +3,7 @@ import { H2 } from '../../../../components/h2/h2';
 import { PublishedAt } from '../published-at/published-at';
 import { Icon } from '../../../../components/icon/icon';
 import { useNavigate } from 'react-router-dom';
+import { PROP_TYPE } from '../../../../constants/prop-type';
 
 const PostContentContainer = ({
     className,
@@ -46,3 +47,7 @@ export const PostContent = styled(PostContentContainer)`
         white-space: pre-wrap;
     }
 `;
+
+PostContent.propTypes = {
+    post: PROP_TYPE.POST.isRequired,
+};

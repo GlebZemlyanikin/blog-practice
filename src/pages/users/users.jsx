@@ -4,19 +4,24 @@ import { UserRow } from './components/user-row/user-row';
 import { TableRow } from './components/table-row/table-row';
 import { useServerRequest } from '../../hooks/use-server-request';
 import { useEffect, useState } from 'react';
-import { Content } from '../../components/content/content';
+import { PrivateContent } from '../../components/private-content/private-content';
 import { ROLE } from '../../bff/constants/role';
+import { checkAccess } from '../../bff/utils/check-access';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '../../selectors/select-user-role';
 
 const UsersContainer = ({ className }) => {
     const [users, setUsers] = useState([]);
     const [roles, setRoles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [deleteError, setDeleteError] = useState(null);
     const [shouldUpdateUserList, setShouldUpdateUserList] = useState(null);
-
+    const userRole = useSelector(selectUserRole);
     const requestServer = useServerRequest();
-
     useEffect(() => {
+        if (!checkAccess([ROLE.ADMIN], userRole)) {
+            return;
+        }
+
         Promise.all([
             requestServer('fetchUsers'),
             requestServer('fetchRoles'),
@@ -29,25 +34,20 @@ const UsersContainer = ({ className }) => {
             setUsers(usersRes.res);
             setRoles(rolesRes.res);
         });
-    }, [requestServer, shouldUpdateUserList]);
+    }, [requestServer, shouldUpdateUserList, userRole]);
 
     const onUserRemove = (userId) => {
-        requestServer('removeUser', userId).then((result) => {
-            if (result.error) {
-                setDeleteError(result.error);
-                return;
-            }
-
-            if (result.res) {
-                setShouldUpdateUserList(!shouldUpdateUserList);
-                setDeleteError(null);
-            }
+        if (!checkAccess([ROLE.ADMIN], userRole)) {
+            return;
+        }
+        requestServer('removeUser', userId).then(() => {
+            setShouldUpdateUserList(!shouldUpdateUserList);
         });
     };
 
     return (
         <div className={className}>
-            <Content error={errorMessage || deleteError}>
+            <PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
                 <H2>Пользователи</H2>
                 <div>
                     <TableRow>
@@ -74,7 +74,7 @@ const UsersContainer = ({ className }) => {
                         );
                     })}
                 </div>
-            </Content>
+            </PrivateContent>
         </div>
     );
 };

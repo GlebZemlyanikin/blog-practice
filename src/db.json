@@ -140,11 +140,32 @@
       "content": "333333",
       "published_at": "2025-09-19 16:36",
       "id": 3
+    },
+    {
+      "post_id": "003",
+      "author_id": "001",
+      "content": "1",
+      "published_at": "2025-09-22 08:37",
+      "id": 4
+    },
+    {
+      "post_id": "003",
+      "author_id": "001",
+      "content": "2",
+      "published_at": "2025-09-22 08:37",
+      "id": 5
+    },
+    {
+      "post_id": "003",
+      "author_id": "001",
+      "content": "3",
+      "published_at": "2025-09-22 08:37",
+      "id": 6
     }
   ],
   "sessions": [
     {
-      "hash": "lv2zqihyheh",
+      "hash": "y0drt39z19r",
       "user": {
         "id": "001",
         "login": "ivan",

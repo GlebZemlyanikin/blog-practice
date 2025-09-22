@@ -3,17 +3,17 @@ import { H2 } from '../h2/h2';
 
 const Div = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    align=items: center;
+    font-weight: bold;
+    font-size: 20px;
 `;
 
-export const Content = ({ children, error }) => {
-    return error ? (
+export const Error = ({ error }) =>
+    error && (
         <Div>
             <H2>Ошибка</H2>
             <div>{error}</div>
         </Div>
-    ) : (
-        children
     );
-};

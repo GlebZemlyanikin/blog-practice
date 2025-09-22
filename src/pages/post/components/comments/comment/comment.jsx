@@ -81,12 +81,12 @@ const CommentContainer = ({
 
 export const Comment = styled(CommentContainer)`
     display: flex;
-    padding: 10px 0;
-    border-bottom: 2px solid #eee;
+    padding: 14px 0;
+    border-bottom: 1px solid #f3f4f6;
 
     & .comment {
         width: 100%;
-        padding: 0 10px;
+        padding: 0 12px;
     }
 
     & .comment-header {
@@ -98,15 +98,21 @@ export const Comment = styled(CommentContainer)`
     & .author {
         display: flex;
         align-items: center;
+        color: #111827;
+        font-weight: 600;
     }
 
     & .published-at {
         display: flex;
         align-items: center;
+        color: #6b7280;
+        font-size: 14px;
     }
 
     & .comment {
         margin: 10px 0 0;
+        font-size: 16px;
+        line-height: 1.5;
     }
 `;
 

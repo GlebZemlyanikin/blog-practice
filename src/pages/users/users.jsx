@@ -86,4 +86,19 @@ export const Users = styled(UsersContainer)`
     width: 570px;
     margin: 0 auto;
     font-size: 18px;
+
+    & > div > div:first-child {
+        background: #fafafa;
+        border: 1px solid #f3f4f6;
+        border-radius: 10px;
+        padding: 12px 4px;
+        margin-bottom: 8px;
+    }
+
+    & > div > div:first-child .login-column,
+    & > div > div:first-child .registered-at-column,
+    & > div > div:first-child .role-column {
+        font-weight: 600;
+        color: #374151;
+    }
 `;

@@ -56,7 +56,8 @@ export const Footer = styled(FooterContainer)`
     width: 1000px;
     height: 120px;
     padding: 20px 40px;
-    box-shadow: 0px 7px 35px 9px rgba(97, 97, 97, 1);
-    background-color: #fff;
-    font-weight: bold;
+    background-color: #ffffff;
+    border-top: 1px solid #f3f4f6;
+    box-shadow: 0 -2px 24px rgba(0, 0, 0, 0.04);
+    font-weight: 600;
 `;

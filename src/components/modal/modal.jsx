@@ -45,11 +45,12 @@ export const Modal = styled(ModalContainer)`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 400px;
+        width: 420px;
         background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
+        padding: 24px;
+        border-radius: 12px;
         text-align: center;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
     }
 
     & .overlay {
@@ -58,12 +59,13 @@ export const Modal = styled(ModalContainer)`
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(17, 24, 39, 0.6);
     }
 
     & .buttons {
         display: flex;
         justify-content: space-evenly;
-        margin-top: 60px;
+        margin-top: 40px;
+        gap: 16px;
     }
 `;

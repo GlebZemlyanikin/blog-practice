@@ -75,6 +75,16 @@ export const Comments = styled(CommentsContainer)`
         resize: none;
         height: 120px;
         font-size: 18px;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+        &:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        }
     }
 `;
 

@@ -29,7 +29,7 @@ const MainContainer = ({ className }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [requestServer, page, search]);
 
-    const debouncedSearch = useMemo(() => debounce(setSearch, 2000), []);
+    const debouncedSearch = useMemo(() => debounce(setSearch, 300), []);
 
     const onSearch = ({ target }) => {
         setSearchPhrase(target.value);

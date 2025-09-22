@@ -61,12 +61,16 @@ const UserRowContainer = ({
 export const UserRow = styled(UserRowContainer)`
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 2px solid #eee;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+    align-items: baseline;
 
     & select {
         font-size: 16px;
-        padding: 0 5px;
+        padding: 6px 8px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: #fff;
     }
 `;
 

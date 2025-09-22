@@ -40,13 +40,14 @@ export const Pagination = styled(PaginationContainer)`
     }
 
     & .current-page {
-        border: 1px solid #000;
-        border-radius: 5px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
         width: 220px;
         height: 32px;
         text-align: center;
-        padding: 4px;
+        padding: 6px 10px;
         font-size: 18px;
+        background: #fafafa;
     }
 `;
 

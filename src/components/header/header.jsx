@@ -29,6 +29,7 @@ export const Header = styled(HeaderContainer)`
     width: 1000px;
     height: 120px;
     padding: 20px 40px;
-    box-shadow: 0px -7px 35px 9px rgba(97, 97, 97, 1);
-    background-color: #fff;
+    background-color: #ffffff;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #f3f4f6;
 `;

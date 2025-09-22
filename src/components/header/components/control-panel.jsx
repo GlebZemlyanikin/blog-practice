@@ -14,11 +14,12 @@ const RightAligned = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
 `;
 
 const UserName = styled.div`
-    font-weight: bold;
-    font-size: 28px;
+    font-weight: 600;
+    font-size: 20px;
 `;
 
 const ControlPanelContainer = ({ className }) => {
@@ -45,29 +46,20 @@ const ControlPanelContainer = ({ className }) => {
                 ) : (
                     <>
                         <UserName>{login}</UserName>
-
-                        <Icon
-                            id="fa-sign-out"
-                            margin=" 0 0 0 10px"
-                            onClick={onLogout}
-                        />
+                        <Icon id="fa-sign-out" onClick={onLogout} />
                     </>
                 )}
             </RightAligned>
             <RightAligned>
-                <Icon
-                    id="fa-backward"
-                    margin="10px 0 0 0"
-                    onClick={() => navigate(-1)}
-                />
+                <Icon id="fa-backward" onClick={() => navigate(-1)} />
                 {isAdmin && (
                     <>
                         <Link to="/post">
-                            <Icon id="fa-file-text-o" margin="10px 0 0 16px" />
+                            <Icon id="fa-file-text-o" />
                         </Link>
 
                         <Link to="/users">
-                            <Icon id="fa-users" margin="10px 0 0 16px" />
+                            <Icon id="fa-users" />
                         </Link>
                     </>
                 )}
